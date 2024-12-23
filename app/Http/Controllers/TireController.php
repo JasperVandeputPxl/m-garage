@@ -56,9 +56,7 @@ class TireController extends Controller
      */
     public function edit(Tire $tire)
     {
-        return view('tires.edit', [
-            'tire' => $tire
-        ]);
+        return view('tires.edit', [ 'tire' => $tire ]);
     }
 
     /**
