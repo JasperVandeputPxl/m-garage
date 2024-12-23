@@ -5,7 +5,7 @@
 @section('content')
 <h1>All tires</h1>
 
-<table class="table">
+<table class="table table-bordered table-hover table-striped">
   <thead>
     <tr>
       <th>Size</th>
@@ -15,7 +15,7 @@
       <th>Quantity Used</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-group-divider">
     @forelse($tires as $tire)
       <tr>
         <td>{{ $tire->size }}</td>

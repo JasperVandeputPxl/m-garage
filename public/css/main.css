@@ -1,7 +1,7 @@
 /* Main container */
 
 .main {
-  margin-left: 20px;
+  margin: 20px;
 }
 
 
@@ -19,23 +19,13 @@ ul.nav {
   float: left;
 }
 
-.nav li.username {
-  float: right;
-}
-
-.nav li a {
-  display: block;
+.nav li a, .nav li.nav-text p {
+  display: block !important;
   color: white;
   text-align: center;
   padding: 16px 18px;
   text-decoration: none;
-}
-
-.nav li p {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 0px 30px;
+  margin: 0;
 }
 
 .nav li a:hover:not(.active) {
@@ -118,17 +108,4 @@ button {
 
 .error-border {
   border: 2px solid red !important;
-}
-
-
-/* Post card */
-
-.post-item {
-  box-shadow: 5px 10px 8px 0 rgba(0, 0, 0, 0.3);
-  width: 50%;
-  margin: 30px auto;
-}
-
-.post-content {
-  padding: 10px 20px;
 }

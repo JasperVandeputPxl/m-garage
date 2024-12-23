@@ -5,7 +5,7 @@
 @section('content')
 <h1>All users</h1>
 
-<table class="table">
+<table class="table table-bordered table-hover table-striped">
   <thead>
     <tr>
       <th>Id</th>
@@ -15,7 +15,7 @@
       <th>Promote?</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-group-divider">
     @forelse($users as $user)
       <tr>
         <td>{{ $user->id }}</td>

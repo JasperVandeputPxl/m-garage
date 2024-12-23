@@ -10,11 +10,10 @@
 <body>
   @include('_nav')
 
-  @includeWhen($errors->any(), '_errors')
-
-  @includeWhen(session('success'), '_success')
-
   <div class="main">
+    @includeWhen($errors->any(), '_errors')
+    @includeWhen(session('success'), '_success')
+
     @yield('content')
   </div>
 </body>
