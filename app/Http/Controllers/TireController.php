@@ -105,9 +105,6 @@ class TireController extends Controller
 
     public function quantity(Request $request, Tire $tire)
     {
-        if (strcmp(Auth::user()->user_type, 'admin') !== 0)
-            return redirect()->route('tires.index');
-
         $request->validate([
             'quantity' => [ 'required', 'integer']
         ]);
@@ -136,7 +133,5 @@ class TireController extends Controller
             ->route('tires.index')
             ->with('updated_tire', $tire->id)
             ->with('success', 'Tire quantity was successfully updated!');
-
-        /* ->with('success', 'Tire \'' . $tire->id . '\' quantity was successfully updated!' . ' old: ' . $oldQuantity . ' new: ' . $tire->quantity . ' | old used: ' . $oldUsed . ' new used: ' . $tire->quantity_used); */
     }
 }
