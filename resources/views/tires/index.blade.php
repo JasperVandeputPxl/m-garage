@@ -5,12 +5,13 @@
 @section('extra_assets')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/tablefilter/tablefilter.js') }}"></script>
 @endsection
 
 @section('content')
 <h1>All tires</h1>
 
-<table class="table table-bordered table-hover table-striped align-middle" style="width: initial;">
+<table class="table table-bordered table-hover table-striped align-middle table-to-be-filtered" style="width: initial; caption-side: initial;">
   <thead>
     <tr>
       <th>Size</th>
@@ -83,4 +84,34 @@
     @endforelse
   </tbody>
 </table>
+<script>
+  var tf = new TableFilter(document.querySelector(".table-to-be-filtered"), {
+      "base_path": "../js/tablefilter/",
+      "rows_counter": {
+        "text": 'Tires: '
+      },
+      "btn_reset": {
+        "text": "clear"
+      },
+      "col_types": [
+        "string",
+        "string",
+        "formatted-number",
+        "number",
+        "number",
+        "none",
+        "none"
+      ],
+      "filters_row_index": 1,
+      "col_0": "select",
+      "col_1": "select",
+      "col_2": "none",
+      "col_3": "none",
+      "col_4": "none",
+      "col_5": "none",
+      "col_6": "none",
+      "extensions": [{ "name": "sort" }]
+  });
+  tf.init();
+</script>
 @endsection
