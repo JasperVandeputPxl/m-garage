@@ -43,7 +43,14 @@
         </td>
         @if(strcmp(Auth::user()->user_type, 'admin') === 0)
           <td><a href="{{ route('users.edit', [ 'user' => $user->id ]) }}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a></td>
-          <td><a href="{{ route('users.destroy', [ 'user' => $user->id ]) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+          <td>
+            <form method="POST" action="{{ route('users.destroy', ['user' => $user->id ]) }}">
+              @method('DELETE')
+              @csrf
+
+              <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+            </form>
+          </td>
         @endif
       </tr>
     @empty
