@@ -95,4 +95,38 @@ class TireController extends Controller
         return redirect('tires.show')
             ->with('success', 'Tire has been deleted');
     }
+
+    public function quantity(Request $request, Tire $tire)
+    {
+        $request->validate([
+            'quantity' => [ 'required', 'integer']
+        ]);
+
+        $oldQuantity = $tire->quantity;
+        $newQuantity = (int)($request->input('quantity'));
+
+        $oldUsed = $tire->quantity_used;
+
+        if ($newQuantity > $oldQuantity) {
+            $tire->quantity = $newQuantity;
+        }else if ($newQuantity < $oldQuantity) {
+            $difference = $oldQuantity - $newQuantity;
+
+            $tire->quantity = $newQuantity;
+            $tire->quantity_used += $difference;
+        } else {
+            return redirect()
+                ->route('tires.index')
+                ->withErrors('Tire quantity did not change!');
+        };
+
+        $tire->save();
+
+        return redirect()
+            ->route('tires.index')
+            ->with('updated_tire', $tire->id)
+            ->with('success', 'Tire quantity was successfully updated!');
+
+        /* ->with('success', 'Tire \'' . $tire->id . '\' quantity was successfully updated!' . ' old: ' . $oldQuantity . ' new: ' . $tire->quantity . ' | old used: ' . $oldUsed . ' new used: ' . $tire->quantity_used); */
+    }
 }

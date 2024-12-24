@@ -37,7 +37,6 @@ ul.nav {
   background-color: #fa6908;
 }
 
-
 /* Forms */
 
 label {
@@ -46,7 +45,7 @@ label {
   display: inline-block;
 }
 
-input[type=text],
+input:not(.form-control)[type=text],
 input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -66,7 +65,7 @@ textarea {
   resize: none;
 }
 
-button {
+button:not(.btn) {
   background-color: #fa6908;
   color: white;
   padding: 12px 20px;

@@ -6,6 +6,7 @@
   <title>M's Garage | @yield('title')</title>
   <link rel="stylesheet" href="{{ asset('css/main.css') }} ">
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }} ">
+  @yield('extra_assets')
 </head>
 <body>
   @include('_nav')

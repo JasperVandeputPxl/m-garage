@@ -11,6 +11,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('tires', TireController::class)
     ->except('show')
     ->middleware('auth');
+Route::patch('/tires/quantity/{tire}', [TireController::class, 'quantity'])
+    ->name('tires.quantity')
+    ->middleware('auth');
 
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])
     ->name('login')
