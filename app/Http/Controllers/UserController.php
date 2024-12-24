@@ -101,6 +101,12 @@ class UserController extends Controller
         if (strcmp(Auth::user()->user_type, 'admin') !== 0)
             return redirect()->route('tires.index');
 
+        if (Auth::user()->id == $user->id) {
+            return redirect()
+                ->route('users.index')
+                ->withErrors('You cannot delete yourself!');
+        };
+
         $user->delete();
 
         return redirect()
