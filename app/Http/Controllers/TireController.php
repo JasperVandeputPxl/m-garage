@@ -99,7 +99,8 @@ class TireController extends Controller
 
         $tire->delete();
 
-        return redirect('tires.show')
+        return redirect()
+            ->route('tires.index')
             ->with('success', 'Tire has been deleted');
     }
 
