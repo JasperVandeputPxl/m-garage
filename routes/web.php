@@ -23,5 +23,8 @@ Route::get('/logout', [AuthController::class, 'logout'])
     ->middleware('auth');
 
 Route::resource('users', UserController::class)
-    ->except(['show', 'edit'])
+    ->except('show')
+    ->middleware('auth');
+Route::patch('/users/promote/{user}', [UserController::class, 'promote'])
+    ->name('users.promote')
     ->middleware('auth');

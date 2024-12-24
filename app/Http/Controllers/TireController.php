@@ -64,6 +64,9 @@ class TireController extends Controller
      */
     public function update(Request $request, Tire $tire)
     {
+        if (strcmp(Auth::user()->user_type, 'admin') !== 0)
+            return redirect()->route('tires.index');
+
         $request->validate([
             'size' => [ 'required', 'regex:/^[0-9]{3}\/[0-9]{2}\/[0-9]{2}$/' ],
             'quantity' => [ 'required', 'integer' ],
@@ -90,6 +93,9 @@ class TireController extends Controller
      */
     public function destroy(Tire $tire)
     {
+        if (strcmp(Auth::user()->user_type, 'admin') !== 0)
+            return redirect()->route('tires.index');
+
         $tire->delete();
 
         return redirect('tires.show')
@@ -98,6 +104,9 @@ class TireController extends Controller
 
     public function quantity(Request $request, Tire $tire)
     {
+        if (strcmp(Auth::user()->user_type, 'admin') !== 0)
+            return redirect()->route('tires.index');
+
         $request->validate([
             'quantity' => [ 'required', 'integer']
         ]);
